@@ -72,6 +72,15 @@ def revisar_linea(text: str) -> bool:
                 funciona = False
                 break
             i += 2
+        elif palabra.replace("(","") in global_fun:
+            if len(palabras) - 1 != global_fun[palabra]:
+                funciona = False
+                break
+            else:
+                for i in range(global_fun[palabra]):
+                    if not (palabra.isdigit() or palabra in global_vars):
+                        funciona = False
+                        break
         elif palabra == "LOOK":
             palabraSig = palabras[i + 1]
             if palabraSig not in ["N", "E", "W", "S"]:
